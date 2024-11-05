@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1        # Specify the number of GPUs or set to 'all'
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
+    environment:
+      - HUGGINGFACE_HUB_TOKEN
+    env_file:
+      - .env
+
+  ngrok:
+    image: wernight/ngrok
+    depends_on:
+      - app
+    environment:
+      - NGROK_AUTHTOKEN
+    command: ngrok http app:8000
+    ports:
+      - "4040:4040"  # Expose ngrok web interface
+    env_file:
+      - .env
