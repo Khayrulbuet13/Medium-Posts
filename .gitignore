@@ -1,3 +1,8 @@
 dump/*
 .DS_Store
 .history/
+.vscode
+LinnearRegression/house_price_dataset.csv
+LinnearRegression/simple_house_price_dataset.csv
+LinnearRegression/simple_student_scores.csv
+LinnearRegression/student_scores.csv

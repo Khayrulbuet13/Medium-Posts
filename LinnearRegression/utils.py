@@ -224,6 +224,7 @@ def create_house_price_dataset(output_path="house_price_dataset.csv"):
     
     return df
 
+
 def create_interactive_regression_demo(df):
     """
     Create an interactive linear regression demo with sliders for slope and intercept.
@@ -392,11 +393,10 @@ def create_interactive_regression_demo(df):
             plot_bgcolor='#f8f9fa',
             paper_bgcolor='white'
         )
-    
         with output:
-            fig = go.Figure(data=[trace_data, trace_line], layout=layout)
-            fig.show()
-    
+          fig = go.Figure(data=[trace_data, trace_line], layout=layout)
+          display(fig)
+
     # Connect the sliders to the update function
     slope_slider.observe(update_plot, names='value')
     intercept_slider.observe(update_plot, names='value')
